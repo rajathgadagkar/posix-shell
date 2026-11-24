@@ -55,11 +55,10 @@ static void sort_names(
     ) {
         char key[PATH_MAX];
 
-        snprintf(
+        safe_strcpy(
             key,
-            sizeof(key),
-            "%s",
-            names[i]
+            names[i],
+            sizeof(key)
         );
 
         int j = i - 1;
@@ -71,21 +70,19 @@ static void sort_names(
                 key
             ) > 0
         ) {
-            snprintf(
+            memmove(
                 names[j + 1],
-                sizeof(names[j + 1]),
-                "%s",
-                names[j]
+                names[j],
+                sizeof(names[j + 1])
             );
 
             j--;
         }
 
-        snprintf(
+        safe_strcpy(
             names[j + 1],
-            sizeof(names[j + 1]),
-            "%s",
-            key
+            key,
+            sizeof(names[j + 1])
         );
     }
 }
@@ -114,11 +111,10 @@ static int dedup_names(
             if (
                 write != read
             ) {
-                snprintf(
+                memmove(
                     names[write],
-                    sizeof(names[write]),
-                    "%s",
-                    names[read]
+                    names[read],
+                    sizeof(names[write])
                 );
             }
 
