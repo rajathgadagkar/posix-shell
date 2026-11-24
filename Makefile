@@ -8,7 +8,7 @@ TARGET    := posix-shell
 SRCS := $(wildcard $(SRC_DIR)/*.cpp)
 OBJS := $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRCS))
 
-.PHONY: all clean rebuild run
+.PHONY: all clean rebuild run test
 
 all: $(TARGET)
 
@@ -23,6 +23,9 @@ $(BUILD_DIR):
 
 run: $(TARGET)
 	./$(TARGET)
+
+test: $(TARGET)
+	bash tests/run_tests.sh
 
 clean:
 	rm -rf $(BUILD_DIR) $(TARGET)

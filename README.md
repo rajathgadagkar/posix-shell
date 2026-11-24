@@ -105,8 +105,13 @@ make
 | :--- | :--- |
 | `make` | Compiles all sources into `build/` and links `./posix-shell` |
 | `make run` | Builds (if needed) and starts `./posix-shell` |
+| `make test` | Builds (if needed) and runs the automated test suite (`tests/run_tests.sh`) |
 | `make clean` | Removes `build/` object files and the `./posix-shell` binary |
 | `make rebuild` | Performs a full clean rebuild |
+
+### Continuous Integration (GitHub Actions)
+
+Every push and pull request to `main` automatically runs `.github/workflows/ci.yml` on both **Ubuntu Linux** (`ubuntu-latest`) and **macOS** (`macos-latest`), compiling with strict flags and running `make test` (including Linux `/proc` verification for `pinfo` on Ubuntu).
 
 ## Interactive Usage Examples
 
