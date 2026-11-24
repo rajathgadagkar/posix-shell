@@ -1,5 +1,6 @@
 #include "autocomplete.h"
 #include "shell.h"
+#include "utils.h"
 
 #include <cstdio>
 #include <cstring>
@@ -414,12 +415,11 @@ static void complete_files(
         }
 
         else {
-            snprintf(
-                full,
-                sizeof(full),
-                "%s/%s",
+            path_join(
                 directory,
-                names[0]
+                names[0],
+                full,
+                sizeof(full)
             );
         }
 
@@ -640,12 +640,11 @@ static void collect_path_commands(
 
                 char full[PATH_MAX];
 
-                snprintf(
-                    full,
-                    sizeof(full),
-                    "%s/%s",
+                path_join(
                     p,
-                    e->d_name
+                    e->d_name,
+                    full,
+                    sizeof(full)
                 );
 
                 struct stat st;

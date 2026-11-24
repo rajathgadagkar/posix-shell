@@ -665,12 +665,11 @@ static int builtin_ls(
                     2
                 ) == 0
             ) {
-                snprintf(
-                    paths[np],
-                    sizeof(paths[np]),
-                    "%s/%s",
+                path_join(
                     s->home,
-                    a + 2
+                    a + 2,
+                    paths[np],
+                    sizeof(paths[np])
                 );
             }
 
