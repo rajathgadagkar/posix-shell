@@ -1,0 +1,15 @@
+# Build artifacts
+build/
+*.o
+*.d
+posix-shell
+shell
+
+# OS and editor metadata
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
